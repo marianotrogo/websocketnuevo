@@ -1,12 +1,9 @@
 <div>
-    <h2>Lista de productos</h2>
-    <div id="productList">
+    <div id="product-table">
         <ul>
-            {{#each prods}}
-            <li>Titulo:{{title}},
-                Id:{{id}},
-                Precio:{{precio}},
-                Stock:{{stock}}
+            {{#each products}}
+            <li>
+                {{this}}
             </li>
             {{/each}}
         </ul>
