@@ -2,9 +2,11 @@ import express, {urlencoded} from "express";
 import productRouter from "./routes/products.router.js";
 import cartRouter from "./routes/cart.router.js";
 import __dirname from "./utils.js";
-import { engine } from "express-handlebars";
+import handlebars,{ engine } from "express-handlebars";
 import viewsRouter from "./routes/views.router.js"
 import { Server, Socket } from "socket.io";
+
+
 
 const app = express();
 app.use(urlencoded({extended: true}));
@@ -12,8 +14,9 @@ app.use(urlencoded({extended: true}));
 app.use(express.static(__dirname + "/../public"));
 
 app.engine('handlebars', engine());
-app.set('view engine', 'handlebars');
+app.engine('handlebars', handlebars.engine());
 app.set('views',__dirname + '/views');
+app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.static(__dirname + "../public"));

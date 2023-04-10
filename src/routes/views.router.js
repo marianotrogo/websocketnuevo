@@ -1,38 +1,18 @@
 import { Router } from "express";
-import ProductManager from "../productManager.js";
-import CartManager from "../cartManager/cartManager.js";
+import productManager from "../productManager.js";
 
-
+const prodManager = new productManager("../../productos.json");
+let products = [];
 const viewsRouter = Router();
-const productManager = new ProductManager();
 viewsRouter.get("/", async (req, res) => {
-  const products = await productManager.getProducts();
-  res.render("home",{products});
+  const products = await prodManager.getProducts();
+  res.render("home", {products});
 });
 
 viewsRouter.get("/realTimeProducts", async (req, res) => {
-  const products = await productManager.getProducts();
-  res.render("realTimeProducts", { products });
+  const products = await prodManager.getProducts();
+  res.render('realTimeProducts', {products: products});
 });
 
 
 export default viewsRouter;
-
-// import { Router, json } from "express";
-// import productManager from "../productManager.js";
-
-// const item = new productManager();
-
-// const viewsRouter = Router();
-
-// viewsRouter.get("/", async(req,res)=>{
-//     const prods =await item.getProducts();
-//     console.log(prods);
-//     res.render("home",{prods});
-// })
-
-// viewsRouter.get('/realTimeProducts', (req,res)=>{
-//     res.render('realTimeProducts');
-// })
-
-// export default viewsRouter;

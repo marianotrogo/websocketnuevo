@@ -3,11 +3,10 @@ import __dirname from "../utils.js";
 import productManager from "../productManager.js";
 
 const productsRouter = Router();
-let manager = new productManager(__dirname+"/productos.json");
+const manager = new productManager(__dirname + "./src/productos.json");
 productsRouter.use(json());
 
 productsRouter.get("/", async (req, res) => {
-  console.log(__dirname)
   try {
     const products = await manager.getProducts();
     const { limit } = req.query;

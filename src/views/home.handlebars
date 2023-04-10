@@ -1,17 +1,10 @@
 <div>
-    <div id="product-table">
-        <ul>
-            {{#each products}}
-            <li>
-                {{this}}
-            </li>
-            {{/each}}
-        </ul>
-    </div>
-    <a href="http://localhost:8080/realTimeProducts">
-        <h2>Agregar Productos</h2>
-        <h2>Productos Actualizados en tiempo real</h2>
-    </a>
-</div>
-{{!-- <script src="../../../public/js/index.js"></script>
-<script src="/socket.io/socket.io.js"></script> --}}
+  <h1>Productos</h1>
+  <ul>
+    {{#each products}}
+      <li>{{title}} <br>
+        Precio:{{price}} <br>
+       Descripcion: {{description}}</li>
+    {{/each}}
+  </ul>
+  </div>

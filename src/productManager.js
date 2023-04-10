@@ -2,7 +2,7 @@ import fs from "fs";
 
 
 class productManager {
-    #path="./src/productos.json";
+    #path
     #acumulator = 0;
     
     constructor(path) {
@@ -44,10 +44,15 @@ class productManager {
     }
     async getProducts() {
         try {
-            const productJSON = await fs.promises.readFile(this.#path);
-            return JSON.parse(productJSON);
-        } catch (err) {
+            const productJSON = await fs.promises.readFile(this.#path, 'utf-8');
+            if(products){
+                console.log(products);
+                return JSON.parse(productJSON);
+
+            }else{}
             return [];
+        } catch (err) {
+           
         }
     }
 
