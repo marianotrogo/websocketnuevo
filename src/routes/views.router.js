@@ -1,7 +1,7 @@
 import { Router } from "express";
 import productManager from "../productManager.js";
 
-const prodManager = new productManager('../src/productos.json');
+const prodManager = new productManager('./src/productos.json');
 let products = [];
 const viewsRouter = Router();
 
@@ -13,7 +13,7 @@ viewsRouter.get("/", async(req,res)=>{
 viewsRouter.get('/realTimeProducts', async (req,res)=>{
     let products = await prodManager.getProducts();
     console.log(products);
-    res.render('realTimeProducts',{products});
+    res.render('realTimeProducts',{products: products});
 })
 
 export default viewsRouter;
