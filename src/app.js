@@ -9,6 +9,7 @@ import { Server, Socket } from "socket.io";
 
 
 const app = express();
+const messages = [];
 app.use(urlencoded({extended: true}));
 
 app.use(express.static(__dirname + "/../public"));
@@ -42,5 +43,12 @@ const socketServer = new Server(httpServer);
 socketServer.on("connection", (socket)=>{
     console.log("nuevo cliente conectado");
     socket.emit("productList", "mensaje desde el server");
+})
+
+socketServer.on("connection", (socket)=>{
+    socket.on("chat-message",(data)=>{
+        messages.push(data);
+        socketServer.emit("messsages", messages)
+    })
 })
 
