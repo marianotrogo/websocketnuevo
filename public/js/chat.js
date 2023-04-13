@@ -14,10 +14,10 @@ Swal.fire({
     userName = result.value;
 })
 
-const chatInput = document.getElementById("input_chat");
-chatInput.addEventListener("keyup", (ev)=>{
+const chatBox = document.getElementById("input-chat");
+chatBox.addEventListener("keyup", (ev)=>{
     if (ev.key === "Enter"){
-        const inputMessage = chatInput.value;
+        const inputMessage = chatBox.value;
         if (inputMessage.trim().lenth > 0){
             socket.emit("chat-message", {userName, message: inputMessage})
         }

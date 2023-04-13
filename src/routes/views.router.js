@@ -17,8 +17,8 @@ viewsRouter.get('/realTimeProducts', async (req,res)=>{
     res.render('realTimeProducts',{products: products});
 })
 
-viewsRouter.get("/chat", (req,res)=>{
-    res.send("chat")
+viewsRouter.get('/chat', (req,res)=>{
+    res.send('chat')
 })
 
 export default viewsRouter;
